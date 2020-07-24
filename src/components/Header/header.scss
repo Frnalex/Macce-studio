@@ -1,0 +1,50 @@
+.header {
+    position: fixed;
+    width: 100%;
+    top: 20px;
+    z-index: 10;
+    .row {
+        height: 28px;
+        display: flex;
+        justify-content: space-between;
+        a {
+            font-family: $font-alt;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .nav-burger {
+            cursor: pointer;
+            width: 45px;
+            height: 28px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            span {
+                display: block;
+                height: 1px;
+                width: 100%;
+                background-color: $black;
+                transition: transform 0.2s ease-in-out;
+            }
+        }
+    }
+}
+
+@include up(992) {
+    .header {
+        top: 50px;
+        .row {
+            a {
+                font-size: 1.5rem;
+            }
+            .nav-burger {
+                width: 60px;
+                height: 28px;
+            }
+        }
+    }
+}

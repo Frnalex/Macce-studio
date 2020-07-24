@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import "./styles/App.scss";
+
+import "./App.scss";
 
 //Components
-import Nav from "./components/nav";
+import Header from "./components/Header/header";
+import Nav from "./components/Nav/nav";
 
 //Pages
 import Home from "./pages/home";
@@ -11,6 +13,7 @@ import Services from "./pages/services";
 import Projets from "./pages/projets";
 import About from "./pages/about";
 import Contact from "./pages/contact";
+import MentionsLegales from "./pages/mentions-legales";
 
 //Routes
 const routes = [
@@ -19,6 +22,7 @@ const routes = [
     { path: "/projets", name: "Projets", Component: Projets },
     { path: "/about", name: "About Us", Component: About },
     { path: "/contact", name: "Contact", Component: Contact },
+    { path: "/mentions-legales", name: "Mentions légales", Component: MentionsLegales },
 ];
 
 function debounce(fn, ms) {
@@ -58,7 +62,9 @@ function App() {
 
     return (
         <React.Fragment>
+            <Header dimensions={dimensions} />
             <Nav />
+
             <Switch>
                 {routes.map(({ path, Component }) => (
                     <Route key={path} exact path={path}>
