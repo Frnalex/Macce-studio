@@ -1,0 +1,98 @@
+.home {
+    .projets {
+        margin-top: 50px;
+        p {
+            margin-bottom: 50px;
+        }
+        .projets-items {
+            width: 100%;
+        }
+    }
+
+    .about {
+        margin-top: 80px;
+        line-height: 2;
+        .text-sub {
+            margin-bottom: 20px;
+        }
+        p {
+            max-width: 300px;
+        }
+        a {
+            border-bottom: 1px solid $black;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+@include up(992) {
+    .home {
+        .projets {
+            display: flex;
+            margin-top: 100px;
+            p {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0;
+                margin-top: -5px;
+                min-width: 100px;
+                align-self: flex-start;
+                position: sticky;
+                top: 150px;
+            }
+        }
+
+        .about {
+            margin-top: 200px;
+            display: flex;
+            .text-sub {
+                margin-bottom: 0;
+                margin-top: 2px;
+                min-width: 100px;
+                align-self: flex-start;
+                position: sticky;
+                top: 150px;
+            }
+            a {
+                position: relative;
+                border-bottom: none;
+                padding-bottom: 0;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 1px;
+                    display: block;
+                    right: 0;
+                    bottom: -5px;
+                    background: $black;
+                    transition: 0.4s ease;
+                }
+                &:hover {
+                    &::after {
+                        width: 100%;
+                        left: 0;
+                        background: $black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include up(1200) {
+    .home {
+        .projets {
+            p {
+                min-width: 200px;
+                line-height: 1.5;
+            }
+        }
+
+        .about {
+            .text-sub {
+                min-width: 200px;
+            }
+        }
+    }
+}

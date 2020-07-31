@@ -28,5 +28,63 @@ $font-alt: "BodoniFLF", serif;
     font-display: swap;
 }
 
+@font-face {
+    font-family: "BodoniFLF";
+    src: url("./fonts/BodoniFLF-BoldItalic.eot");
+    src: url("./fonts/BodoniFLF-BoldItalic.eot?#iefix") format("embedded-opentype"), url("./fonts/BodoniFLF-BoldItalic.ttf") format("truetype"),
+        url("./fonts/BodoniFLF-BoldItalic.woff") format("woff"), url("./fonts/BodoniFLF-BoldItalic.woff2") format("woff2");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
 // Texts styles
 // ==================
+.text-xl {
+    font-size: 20vw;
+    font-family: $font-alt;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0.05;
+}
+.text-lg {
+    font-size: 6.6666vw;
+    font-family: $font-alt;
+    font-weight: bold;
+    line-height: 1.6;
+}
+.text-sub {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+.text-sm {
+    font-size: 1rem;
+}
+
+@include up(768) {
+    .text-xl {
+        font-size: 15vw;
+    }
+    .text-lg {
+        font-size: 2.5rem;
+    }
+    .text-sub {
+        font-size: 0.875rem;
+    }
+    .text-sm {
+        font-size: 1.125rem;
+    }
+}
+
+@include up(992) {
+    .text-xl {
+        font-size: 10rem;
+        opacity: 0.02;
+    }
+}
+
+@include up(1300) {
+    .text-lg {
+        font-size: 3.5rem;
+    }
+}

@@ -13,20 +13,28 @@ body {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    min-height: calc(var(--vh, 1vh) * 400);
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 body {
     font-family: $font;
     font-size: 16px;
-    color: var(--black);
+    line-height: 1.5;
+    color: $black;
     background-color: $primary-color;
+    overflow-x: hidden;
 }
 
 .container {
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
+}
+
+.main {
+    padding-top: 353px;
 }
 
 @include up(768) {
@@ -41,22 +49,46 @@ body {
         padding-left: 100px;
         padding-right: 100px;
     }
+
+    .main {
+        padding-top: 200px;
+    }
 }
 
 // Modules
 // ==================
 @import "components/Header/header.scss";
 @import "components/Nav/nav.scss";
+@import "components/Footer/footer.scss";
+@import "components/PageTransition/pageTransition.scss";
+
+// Components
+// ==================
+@import "./components/Link/link.scss";
+@import "./components/Intro/intro.scss";
+@import "./components/Projet/projet.scss";
 
 // Pages
 // ==================
-.Page {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+@import "./pages/home/home.scss";
+@import "./pages/services/services.scss";
+@import "./pages/projets/projets.scss";
+@import "./pages/about/about.scss";
+@import "./pages/mentionsLegales/mentionsLegales.scss";
 
-    h1 {
-        display: flex;
-        align-items: center;
-    }
+.page-enter {
+    opacity: 0;
+}
+.page-enter-active {
+    opacity: 1;
+    transition: opacity 0.4;
+    transition-delay: 0.6;
+}
+
+.page-exit {
+    opacity: 1;
+}
+.page-exit-active {
+    opacity: 0;
+    transition: opacity 0.4;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import "./App.scss";
 
@@ -8,12 +9,12 @@ import Header from "./components/Header/header";
 import Nav from "./components/Nav/nav";
 
 //Pages
-import Home from "./pages/home";
-import Services from "./pages/services";
-import Projets from "./pages/projets";
-import About from "./pages/about";
-import Contact from "./pages/contact";
-import MentionsLegales from "./pages/mentions-legales";
+import Home from "./pages/home/home";
+import Services from "./pages/services/services";
+import Projets from "./pages/projets/projets";
+import About from "./pages/about/about";
+import MentionsLegales from "./pages/mentionsLegales/mentions-legales";
+import Footer from "./components/Footer/footer";
 
 //Routes
 const routes = [
@@ -21,10 +22,10 @@ const routes = [
     { path: "/services", name: "Services", Component: Services },
     { path: "/projets", name: "Projets", Component: Projets },
     { path: "/about", name: "About Us", Component: About },
-    { path: "/contact", name: "Contact", Component: Contact },
     { path: "/mentions-legales", name: "Mentions légales", Component: MentionsLegales },
 ];
 
+//Debounce function
 function debounce(fn, ms) {
     let timer;
     return () => {
@@ -37,11 +38,13 @@ function debounce(fn, ms) {
 }
 
 function App() {
+    const location = useLocation();
+
+    //Rezise windows
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
         width: window.innerWidth,
     });
-
     useEffect(() => {
         let vh = dimensions.height * 0.01;
         document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -64,14 +67,16 @@ function App() {
         <React.Fragment>
             <Header dimensions={dimensions} />
             <Nav />
-
-            <Switch>
-                {routes.map(({ path, Component }) => (
-                    <Route key={path} exact path={path}>
-                        <Component />
-                    </Route>
-                ))}
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+                <Switch location={location} key={location.pathname}>
+                    {routes.map(({ path, Component }) => (
+                        <Route key={path} exact path={path}>
+                            <Component dimensions={dimensions} />
+                        </Route>
+                    ))}
+                </Switch>
+            </AnimatePresence>
+            <Footer />
         </React.Fragment>
     );
 }
