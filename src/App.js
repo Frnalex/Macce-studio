@@ -16,6 +16,8 @@ import About from "./pages/about/about";
 import MentionsLegales from "./pages/mentionsLegales/mentions-legales";
 import Footer from "./components/Footer/footer";
 
+import ProjetPage from "./pages/projetPage/projetPage";
+
 //Routes
 const routes = [
     { path: "/", name: "Home", Component: Home },
@@ -23,6 +25,7 @@ const routes = [
     { path: "/projets", name: "Projets", Component: Projets },
     { path: "/about", name: "About Us", Component: About },
     { path: "/mentions-legales", name: "Mentions légales", Component: MentionsLegales },
+    { path: "/projet-page", name: "Projet Page", Component: ProjetPage },
 ];
 
 //Debounce function

@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 //Components
 import FixedTitle from "../../components/FixedTitle";
@@ -7,8 +6,6 @@ import PageTransition from "../../components/PageTransition/pageTransition";
 
 //image
 import eline from "../../assets/eline.jpg";
-
-const transition = { duration: 0.6, ease: [0.43, 0.13, 0.26, 0.96] };
 
 const About = ({ dimensions }) => {
     let container768 = "";
@@ -40,7 +37,7 @@ const About = ({ dimensions }) => {
                             Feno, mes pauses devant des films de Woody Allen, mes voyages, mes livres et bien plus encore.
                         </p>
                     </div>
-                    <motion.img whileHover={{ scale: 1.1 }} transition={transition} src={eline} alt='' />
+                    <img src={eline} alt='' />
                     <div className={`text-content ${containerSmall}`}>
                         <p>
                             Je m’appelle Eline Mara. Je suis créative et passionnée depuis toujours par la photographie et le design. J’ai étudié
