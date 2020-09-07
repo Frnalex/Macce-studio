@@ -25,8 +25,8 @@ const FixedTitle = ({ dimensions, children }) => {
 
     return (
         <div style={styles}>
-            {splitChildren.map((children, key) => (
-                <p className='text-xl' key={key}>
+            {splitChildren.map((children, index) => (
+                <p className='text-xl' key={index}>
                     {children}
                 </p>
             ))}

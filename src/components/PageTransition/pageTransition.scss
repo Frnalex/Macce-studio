@@ -49,3 +49,13 @@
     background-color: $white;
     z-index: 100;
 }
+
+.transition-out-default {
+    position: fixed;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: $white;
+    z-index: 1000;
+    pointer-events: none;
+}

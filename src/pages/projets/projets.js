@@ -6,7 +6,7 @@ import FixedTitle from "../../components/FixedTitle";
 import Projet from "../../components/Projet/projet";
 
 //liste des projets
-import projets from "../../projets";
+import projets from "../../dataProjets.json";
 
 const Projets = ({ dimensions }) => {
     return (
@@ -16,8 +16,8 @@ const Projets = ({ dimensions }) => {
             </PageTransition>
             <FixedTitle dimensions={dimensions}>Nos Projets</FixedTitle>
             <section className='container'>
-                {projets.map((projet, key) => (
-                    <Projet key={key}>{projet}</Projet>
+                {projets.map((projet, index) => (
+                    <Projet key={index}>{projet}</Projet>
                 ))}
             </section>
         </main>

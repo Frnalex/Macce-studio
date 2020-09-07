@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Good Skin Corner",
+        "path": "good-skin-corner",
+        "date": "2020",
+        "services": ["Photographie", "Branding", "Storytelling", "autre"],
+        "description": [
+            "Ce qui est génial dans le métier de créateur de contenu forcément : la création. Le plus dur : ne pas s’éparpiller et trouver sa propre « patte artistique ». Mais plus on travaille, plus la recherche sur nos envies évolue.J’adore prendre du temps pour photographier des portraits.",
+            "Voici plusieurs shooting qui m’ont permit d’agrémenter mon compte Instagram. Entre la montagne et la mer, c’est avec mes modèles que j’aime bouger en Corse, découvrir des paysages à couper le souffle et photographier ces instants pour vous mais aussi pour moi."
+        ]
+    },
+    {
+        "name": "Lola Rossi : la pétillante collaboration",
+        "path": "lola-rossi",
+        "date": "2020",
+        "services": ["Photographie", "Branding", "Storytelling"],
+        "description": [
+            "Cette femme là a mille et une corde a son arc. Comme une « Dourga » hindou elle gère sa vie de maman à plein temps, son métier de créatrice de contenu et ses voyages. Comme vous pouvez vous en doutez j’ai la chance de pouvoir collaborer avec Lola Rossi. Une jeune maman pétillante et pleine d’énergie.",
+            "Avec plus de 300 000k abonné(e)s sur Instagram à son actif, je participe en tant «qu’assistante» création de contenu pour la soutenir dans ses projets : recettes, photos, montages. Pleins de belles choses sont à venir pour la suite : je vous conseille d’allez la suivre pour partager ses coups de coeurs, ses voyages et ses collaborations !"
+        ]
+    },
+    {
+        "name": "Jeu d'ombres et de lumières",
+        "path": "jeu-d-ombres-et-de-lumières",
+        "date": "2019",
+        "services": ["Photographie", "Branding", "Storytelling"],
+        "description": [
+            "Ce qui est génial dans le métier de créateur de contenu forcément : la création. Le plus dur : ne pas s’éparpiller et trouver sa propre « patte artistique ». Mais plus on travaille, plus la recherche sur nos envies évolue.J’adore prendre du temps pour photographier des portraits.",
+            "Voici plusieurs shooting qui m’ont permit d’agrémenter mon compte Instagram. Entre la montagne et la mer, c’est avec mes modèles que j’aime bouger en Corse, découvrir des paysages à couper le souffle et photographier ces instants pour vous mais aussi pour moi.",
+            "Modèles : Julie Martinez, Anne-Charlotte Ottavi"
+        ],
+        "couverture": "couv.jpg",
+        "photos": ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"]
+    },
+    {
+        "name": "De la photographie à l'illustration",
+        "path": "de-la-photographie-a-l-illustration",
+        "date": "2019",
+        "services": ["Photographie", "Branding", "Storytelling"],
+        "description": [
+            "Mon côté graphique a mis du temps à se mettre en place, pour être honnête avec vous. Malgré cela c’est une de mes grandes passions ! Je m’efforce tant bien que mal à m’exercer à l’illustration tout comme une très bonne amie à moi Victoria Labalme (et je vous invite d’ailleurs à regarder son travail sur Behance) mais je me suis résignée à faire des corps en 3 traits et avouer que ce n’est pas parfait. Et puis j’ai découvert également qu’avec des visages, ma grande passion, on pouvait justement jouer sur le côté de dessin graphique pour donner un peu de relief !",
+            "C’est dans mon ancienne alternance « Benoa », marque Corse de prêt à porter solaire et féminin, que j’ai récupérer une photo du shooting de la collection été 2019 avec Andrea Besson où j’ai apporté une petite touche."
+        ],
+        "couverture": "couv.jpg"
+    },
+    {
+        "name": "Du Petit Lunetier à Armani",
+        "path": "du-petit-lunetier-a-armani",
+        "date": "2019",
+        "services": ["Photographie", "Branding", "Storytelling"],
+        "description": [
+            "Au cours de ma Licence en Métiers du Design à Corte en Corse j’ai appris, grâce à William Moureaux, à donner vie aux objets car je manquais cruellement d’expérience en la matière. Leur donner une belle forme, apprendre à gérer les couleurs, les tons et les contrastes. Je vous invite d’ailleurs à aller voir son travail sur son site internet car oui : c’est le meilleur ouvrier de France ! Donc même si on n’apprécie pas vraiment la critique sur ce que l’on crée, venant de sa part, j’écoutais ses conseils comme on écoutait des histoires en étant petit : on en veut toujours plus.",
+            "Ces créations sont donc le fruit d’un cours en Licence. Le but ? Apporter une touche publicitaire et de contraste."
+        ],
+        "couverture": "couv.jpg"
+    },
+    {
+        "name": "Des graphiques pas comme les autres",
+        "path": "des-graphiques-pas-comme-les-autres",
+        "date": "2019",
+        "services": ["Photographie", "Branding", "Storytelling"],
+        "description": [
+            "La Data-visualisation. La datavisa quoi ? Oui, la datavisualisation. Pour ceux à qui ça ne dit rien c’est : l'étude, la science ou l'art de représenter des données de façon visuelle. (merci wiki) Représenter des données visuelles et graphique attire plus le regard ! C’est également en Licence des Métiers du Design numérique que j’ai appris sur la suite Adobe à faire d’un simple graphique (pas de jeu de mot s’il vous plaît) quelque chose de contemporain, de moderne et agréable à regarder."
+        ]
+    }
+]

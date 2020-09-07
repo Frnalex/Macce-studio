@@ -10,7 +10,6 @@ const Header = ({ history, dimensions }) => {
     useEffect(() => {
         history.listen(() => {
             setNavToggle(false);
-            window.scrollTo(0, 0);
         });
 
         if (navToggle === true) {
@@ -44,7 +43,7 @@ const Header = ({ history, dimensions }) => {
                     ease: "Power2.easeOut",
                     delay: -0.2,
                 })
-                .set("body", { overflow: "auto" })
+                .set("body", { overflowY: "auto" })
                 .set(".nav-burger", { pointerEvents: "auto" });
         }
     });

@@ -58,6 +58,13 @@
     }
 
     .content {
+        @include up(768) {
+            padding-bottom: 50px;
+        }
+        @include up(992) {
+            padding-bottom: 40px;
+        }
+
         .text {
             margin-top: 50px;
             margin-bottom: 50px;
@@ -127,25 +134,33 @@
             }
         }
 
-        .images {
-            display: flex;
-            flex-wrap: wrap;
+        .images-grid {
             img {
                 display: block;
                 width: 100%;
                 height: auto;
                 object-fit: cover;
             }
-
-            @include up(798) {
-                img {
-                    width: 50%;
+        }
+        @include up(768) {
+            .images-grid {
+                margin-left: 16px;
+                margin-right: 50px;
+                display: flex;
+                width: auto;
+            }
+            .images-grid_column {
+                padding-left: 34px; /* gutter size */
+                background-clip: padding-box;
+                > * {
+                    background: grey;
+                    margin-bottom: 60px;
                 }
             }
         }
         @include up(992) {
-            .images {
-                margin-left: 100px;
+            .images-grid {
+                margin-left: 66px;
                 margin-right: 100px;
             }
         }

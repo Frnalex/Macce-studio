@@ -25,7 +25,7 @@ const routes = [
     { path: "/projets", name: "Projets", Component: Projets },
     { path: "/about", name: "About Us", Component: About },
     { path: "/mentions-legales", name: "Mentions légales", Component: MentionsLegales },
-    { path: "/projet-page", name: "Projet Page", Component: ProjetPage },
+    { path: "/:id", name: "Projet Page", Component: ProjetPage },
 ];
 
 //Debounce function
@@ -70,7 +70,7 @@ function App() {
         <React.Fragment>
             <Header dimensions={dimensions} />
             <Nav />
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
                 <Switch location={location} key={location.pathname}>
                     {routes.map(({ path, Component }) => (
                         <Route key={path} exact path={path}>

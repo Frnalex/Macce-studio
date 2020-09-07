@@ -51,7 +51,7 @@ const Nav = () => {
                         <a href='https://www.instagram.com/macce_studio/' target='_blank' rel='noopener noreferrer'>
                             <Instagram />
                         </a>
-                        <a href='https://www.instagram.com/macce_studio/' target='_blank' rel='noopener noreferrer'>
+                        <a href='https://www.pinterest.fr/maccestudiopro/' target='_blank' rel='noopener noreferrer'>
                             <Pinterest />
                         </a>
                     </div>

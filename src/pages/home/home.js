@@ -6,16 +6,21 @@ import FixedTitle from "../../components/FixedTitle";
 import Intro from "../../components/Intro/intro";
 import Projet from "../../components/Projet/projet";
 
+//Transitions
+import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+
 //Liste des projets
-import projets from "../../projets";
-const homeProjets = projets.slice(0, 4);
+import projets from "../../dataProjets.json";
 
 const Home = ({ dimensions }) => {
+    const homeProjets = projets.slice(0, 4);
+
     return (
         <main className='home'>
-            <PageTransition>
+            <TransitionOutDefault />
+            {/* <PageTransition>
                 <FixedTitle dimensions={dimensions}>Maccė Studio</FixedTitle>
-            </PageTransition>
+            </PageTransition> */}
             <FixedTitle dimensions={dimensions}>Maccė Studio</FixedTitle>
             <div className='container'>
                 <Intro />
@@ -33,16 +38,16 @@ const Home = ({ dimensions }) => {
                 <section className='about'>
                     <p className='text-sub'>Contact</p>
                     <p className='text-sm'>
-                        Retrouvez-moi sur{" "}
+                        Retrouvez-nous sur{" "}
                         <a href='https://www.instagram.com/macce_studio/' target='_blank' rel='noopener noreferrer'>
                             Instagram
                         </a>
                         {" / "}
-                        <a href='https://www.instagram.com/macce_studio/' target='_blank' rel='noopener noreferrer'>
+                        <a href='https://www.pinterest.fr/maccestudiopro/' target='_blank' rel='noopener noreferrer'>
                             Pinterest
                         </a>
                         {" / "}
-                        <a href='https://www.instagram.com/macce_studio/' target='_blank' rel='noopener noreferrer'>
+                        <a href='https://www.behance.net/elinemarad93c' target='_blank' rel='noopener noreferrer'>
                             Behance
                         </a>
                         {" / "}

@@ -8,17 +8,22 @@ const PageTransition = ({ children }) => {
     let tl = gsap.timeline();
 
     useEffect(() => {
-        tl.to(".transition-enter .text .text-xl", {
-            duration: 1,
-            y: 0,
-            opacity: 1,
-            ease: "power3.out",
-            stagger: 0.1,
-        }).to(".transition-enter", {
+        const textXl = document.querySelectorAll(".transition-enter .text .text-xl");
+        if (textXl) {
+            tl.to(".transition-enter .text .text-xl", {
+                duration: 1,
+                y: 0,
+                opacity: 1,
+                ease: "power3.out",
+                stagger: 0.1,
+            });
+        }
+        tl.to(".transition-enter", {
             duration: 0.4,
             height: 0,
             ease: [0.43, 0.13, 0.26, 0.96],
             delay: -0.3,
+            // onComplete: window.scrollTo(0, 0),
         });
     });
 
