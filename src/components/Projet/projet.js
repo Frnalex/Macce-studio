@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import ProgressiveImage from "react-progressive-image";
 
 const Projet = ({ children }) => {
     const [hovered, setHovered] = useState(false);
@@ -28,14 +29,20 @@ const Projet = ({ children }) => {
             {hovered && (
                 <div className='image'>
                     <AnimatePresence>
-                        <motion.img
-                            key={children.url}
-                            src='https://images.unsplash.com/photo-1599147551360-b43720185bff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-                            alt=''
-                            initial={{ scale: 0.9, opacity: 0, x: "-50%", y: "-50%" }}
-                            animate={{ scale: 1, opacity: 0.8 }}
-                            transition={transition}
-                        />
+                        <ProgressiveImage
+                            src={require(`../../assets/projets/${children.path}/${children.couvertureSm}`)}
+                            placeholder={require(`../../assets/projets/${children.path}/tiny/${children.couvertureSm}`)}
+                        >
+                            {(src) => (
+                                <motion.img
+                                    initial={{ scale: 0.9, opacity: 0, x: "-50%", y: "-50%" }}
+                                    animate={{ scale: 1, opacity: 0.8 }}
+                                    transition={transition}
+                                    src={src}
+                                    alt=''
+                                />
+                            )}
+                        </ProgressiveImage>
                     </AnimatePresence>
                 </div>
             )}

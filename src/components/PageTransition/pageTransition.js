@@ -23,7 +23,6 @@ const PageTransition = ({ children }) => {
             height: 0,
             ease: [0.43, 0.13, 0.26, 0.96],
             delay: -0.3,
-            // onComplete: window.scrollTo(0, 0),
         });
     });
 

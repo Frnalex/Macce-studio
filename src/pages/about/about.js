@@ -2,7 +2,10 @@ import React from "react";
 
 //Components
 import FixedTitle from "../../components/FixedTitle";
-import PageTransition from "../../components/PageTransition/pageTransition";
+
+//Transitions
+import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+import TransitionInDefault from "../../components/PageTransition/transitionInDefault";
 
 //image
 import eline from "../../assets/eline.jpg";
@@ -18,9 +21,10 @@ const About = ({ dimensions }) => {
 
     return (
         <main className='main'>
-            <PageTransition>
+            <TransitionOutDefault />
+            <TransitionInDefault>
                 <FixedTitle dimensions={dimensions}>à Propos</FixedTitle>
-            </PageTransition>
+            </TransitionInDefault>
             <FixedTitle dimensions={dimensions}>à Propos</FixedTitle>
             <section className={`about ${container768}`}>
                 <p className={`text-sub ${containerSmall}`}>Qui suis-je ?</p>

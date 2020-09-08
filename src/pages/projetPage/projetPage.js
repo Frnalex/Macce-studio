@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import { useLastLocation } from "react-router-last-location";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
-//Components
-import PageTransition from "../../components/PageTransition/pageTransition";
+//Transitions
+import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+import TransitionInDefault from "../../components/PageTransition/transitionInDefault";
 
 //Liste des projets
 import projets from "../../dataProjets.json";
@@ -65,19 +67,25 @@ const imagesGallery = [
     },
 ];
 
-const ProjetPage = () => {
+const ProjetPage = ({ dimensions }) => {
     //Projet qui a été sélectionné
     let { id } = useParams();
     const selectedProjet = projets.find((projet) => projet.path === id);
 
-    //Projet suivant
+    //Projet suivant et précédent
     let nextIndex = projets.indexOf(selectedProjet) + 1;
     if (nextIndex >= projets.length) {
         nextIndex = 0;
     }
+    let prevIndex = projets.indexOf(selectedProjet) - 1;
+    if (prevIndex === -1) {
+        prevIndex = projets.length - 1;
+    }
 
     const { scrollYProgress } = useViewportScroll();
-    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 2]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.3]);
+    const scaleNextProjet = useTransform(scrollYProgress, [0.5, 1], [1.3, 1.1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.3], [0.3, 1]);
 
     const transition = { duration: 0.4, ease: [0.43, 0.13, 0.26, 0.96] };
 
@@ -88,19 +96,46 @@ const ProjetPage = () => {
         768: 1,
     };
 
+    const [transitionOutDefault, setTransitionOutDefault] = useState(true);
+
+    let lastLocation = useLastLocation();
+    useEffect(() => {
+        if (lastLocation && lastLocation.pathname === `/${projets[prevIndex].path}`) {
+            setTransitionOutDefault(false);
+        }
+    });
+
     return (
         <main className='projetPage'>
-            <PageTransition />
+            {transitionOutDefault && <TransitionOutDefault />}
+            {transitionOutDefault && <TransitionInDefault />}
+
             <article>
                 <header>
-                    <motion.img
-                        // src={require(`../../assets/projets/${selectedProjet.path}/${selectedProjet.couverture}`)}
-                        src='https://images.unsplash.com/photo-1516557070061-c3d1653fa646?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-                        alt=''
+                    <ProgressiveImage
+                        src={require(`../../assets/projets/${selectedProjet.path}/${
+                            dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
+                        }`)}
+                        placeholder={require(`../../assets/projets/${selectedProjet.path}/tiny/${
+                            dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
+                        }`)}
+                    >
+                        {(src) => (
+                            <motion.img
+                                style={{
+                                    scale,
+                                }}
+                                src={src}
+                                alt=''
+                            />
+                        )}
+                    </ProgressiveImage>
+                    <motion.div
                         style={{
-                            scale,
+                            opacity,
                         }}
-                    />
+                        className='overlay'
+                    ></motion.div>
                     <h1 className='text-lg'>{selectedProjet.name}</h1>
                 </header>
                 <div className='content'>
@@ -127,47 +162,51 @@ const ProjetPage = () => {
                         </div>
                     </div>
                     <Masonry breakpointCols={breakpointColumnsObj} className='images-grid' columnClassName='images-grid_column'>
-                        {imagesGallery.map((photo, id) => (
+                        {selectedProjet.photos.map((photo, id) => (
                             <Photo key={id}>
                                 <ProgressiveImage
-                                    src={photo.src}
-                                    placeholder='https://is1-ssl.mzstatic.com/image/thumb/Purple124/v4/96/6d/09/966d09df-0771-df82-e290-df6e5f9bfbb1/source/256x256bb.jpg'
+                                    src={require(`../../assets/projets/${selectedProjet.path}/${photo}`)}
+                                    placeholder={require(`../../assets/projets/${selectedProjet.path}/tiny/${photo}`)}
                                 >
-                                    {/* {(src, loading) => <motion.img whileHover={{ scale: 1.15 }} transition={transition} src={src} alt='an image' />} */}
-                                    {(src, loading) => {
-                                        const ratio = (100 * photo.width) / photo.height + "%";
-                                        const color = getComputedStyle(document.documentElement).getPropertyValue("--red");
-                                        console.log(color);
-                                        return loading ? (
-                                            <div style={{ backgroundColor: color, paddingBottom: ratio }} />
-                                        ) : (
-                                            <motion.img
-                                                whileHover={{ scale: 1.15 }}
-                                                transition={transition}
-                                                src={src}
-                                                height={photo.height}
-                                                width={photo.width}
-                                                alt=''
-                                            />
-                                        );
-                                    }}
+                                    {(src) => <motion.img whileHover={{ scale: 1.15 }} transition={transition} src={src} alt='' />}
                                 </ProgressiveImage>
                             </Photo>
                         ))}
                     </Masonry>
                 </div>
             </article>
-            <motion.div className='next-projet' exit={{ opacity: 0 }}>
-                <img
-                    src='https://images.unsplash.com/photo-1516557070061-c3d1653fa646?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-                    alt=''
-                />
-                <div className='text'>
-                    <p className='text-sub'>Projet suivant</p>
-                    <NavLink to={projets[nextIndex].path} exact>
+            <motion.div className='next-projet'>
+                <ProgressiveImage
+                    src={require(`../../assets/projets/${projets[nextIndex].path}/${
+                        dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
+                    }`)}
+                    placeholder={require(`../../assets/projets/${projets[nextIndex].path}/tiny/${
+                        dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
+                    }`)}
+                >
+                    {(src) => (
+                        <motion.img
+                            initial={{ scale: 1.1 }}
+                            exit={{ scale: 1 }}
+                            transition={transition}
+                            style={{ scale: scaleNextProjet }}
+                            src={src}
+                            alt=''
+                        />
+                    )}
+                </ProgressiveImage>
+                <motion.div className='overlay' initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transition}></motion.div>
+                <motion.div className='overlay black' initial={{ opacity: 0 }} exit={{ opacity: 0.3 }} transition={transition}></motion.div>
+                <motion.div className='text' initial={{ color: "000" }} exit={{ color: "#fff" }} transition={transition}>
+                    <div className='text-block'>
+                        <motion.p className='text-sub' initial={{ y: 0 }} exit={{ y: -20 }} transition={transition}>
+                            Projet suivant
+                        </motion.p>
+                    </div>
+                    <NavLink to={projets[nextIndex].path} exact onClick={() => setTransitionOutDefault(false)}>
                         <h2 className='text-lg'>{projets[nextIndex].name}</h2>
                     </NavLink>
-                </div>
+                </motion.div>
             </motion.div>
         </main>
     );

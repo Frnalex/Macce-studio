@@ -2,7 +2,10 @@ import React from "react";
 
 //Components
 import FixedTitle from "../../components/FixedTitle";
-import PageTransition from "../../components/PageTransition/pageTransition";
+
+//Transitions
+import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+import TransitionInDefault from "../../components/PageTransition/transitionInDefault";
 
 //Liste des services
 const services = [
@@ -27,9 +30,10 @@ const services = [
 const Services = ({ dimensions }) => {
     return (
         <main className='main'>
-            <PageTransition>
+            <TransitionOutDefault />
+            <TransitionInDefault>
                 <FixedTitle dimensions={dimensions}>Nos Services</FixedTitle>
-            </PageTransition>
+            </TransitionInDefault>
             <FixedTitle dimensions={dimensions}>Nos Services</FixedTitle>
             <section className='container'>
                 <div className='services'>

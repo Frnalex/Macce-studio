@@ -1,9 +1,12 @@
 import React from "react";
 
 //Components
-import PageTransition from "../../components/PageTransition/pageTransition";
 import FixedTitle from "../../components/FixedTitle";
 import Projet from "../../components/Projet/projet";
+
+//Transitions
+import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+import TransitionInDefault from "../../components/PageTransition/transitionInDefault";
 
 //liste des projets
 import projets from "../../dataProjets.json";
@@ -11,9 +14,10 @@ import projets from "../../dataProjets.json";
 const Projets = ({ dimensions }) => {
     return (
         <main className='main'>
-            <PageTransition>
+            <TransitionOutDefault />
+            <TransitionInDefault>
                 <FixedTitle dimensions={dimensions}>Nos Projets</FixedTitle>
-            </PageTransition>
+            </TransitionInDefault>
             <FixedTitle dimensions={dimensions}>Nos Projets</FixedTitle>
             <section className='container'>
                 {projets.map((projet, index) => (

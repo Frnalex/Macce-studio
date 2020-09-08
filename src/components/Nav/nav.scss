@@ -50,8 +50,9 @@
             li {
                 transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out;
                 &:hover {
-                    transform: skewX(-10deg);
+                    color: $white;
                     padding-left: 20px;
+                    text-shadow: -1px 1px 0 $black, 1px 1px 0 $black, 1px -1px 0 $black, -1px -1px 0 $black;
                 }
             }
         }

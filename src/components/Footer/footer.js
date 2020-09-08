@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className='footer'>
             <p>© Tous droits réservés - 2020</p>
             <p>
-                By{" "}
+                Design & Code :{" "}
                 <a href='https://www.alexandre-fournou.com/' target='_blank' rel='noopener noreferrer'>
                     Alex
                 </a>

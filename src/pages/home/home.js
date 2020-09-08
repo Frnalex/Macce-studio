@@ -1,26 +1,26 @@
 import React from "react";
 
 //Components
-import PageTransition from "../../components/PageTransition/pageTransition";
 import FixedTitle from "../../components/FixedTitle";
 import Intro from "../../components/Intro/intro";
 import Projet from "../../components/Projet/projet";
 
 //Transitions
 import TransitionOutDefault from "../../components/PageTransition/transitionOutDefault";
+import TransitionInDefault from "../../components/PageTransition/transitionInDefault";
 
 //Liste des projets
 import projets from "../../dataProjets.json";
 
 const Home = ({ dimensions }) => {
-    const homeProjets = projets.slice(0, 4);
+    const homeProjets = projets.slice(0, 3);
 
     return (
         <main className='home'>
             <TransitionOutDefault />
-            {/* <PageTransition>
+            <TransitionInDefault>
                 <FixedTitle dimensions={dimensions}>Maccė Studio</FixedTitle>
-            </PageTransition> */}
+            </TransitionInDefault>
             <FixedTitle dimensions={dimensions}>Maccė Studio</FixedTitle>
             <div className='container'>
                 <Intro />
