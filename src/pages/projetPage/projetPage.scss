@@ -46,6 +46,27 @@
             max-width: 75%;
             font-weight: 500;
         }
+
+        .scroll {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 50px;
+            width: 1px;
+            background-color: $white;
+            animation: scroll 1s ease-out infinite;
+            @keyframes scroll {
+                0% {
+                    transform: translateY(100%);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateY(0);
+                    opacity: 0;
+                }
+            }
+        }
     }
 
     @include up(768) {
@@ -128,6 +149,31 @@
                         margin-bottom: 20px;
                         .text-sub {
                             min-width: 100px;
+                        }
+                    }
+                    a {
+                        position: relative;
+                        border-bottom: none;
+                        padding-bottom: 0;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 1px;
+                            display: block;
+                            right: 0;
+                            bottom: -5px;
+                            background: $black;
+                            transition: 0.4s ease;
+                        }
+                        &:hover {
+                            &::after {
+                                width: 100%;
+                                left: 0;
+                                background: $black;
+                            }
                         }
                     }
                 }

@@ -14,58 +14,6 @@ import projets from "../../dataProjets.json";
 import Masonry from "react-masonry-css";
 import Photo from "../../components/Photo/photo";
 import ProgressiveImage from "react-progressive-image";
-const imagesGallery = [
-    {
-        src: "https://source.unsplash.com/user/erondu/100x50",
-        height: 100,
-        width: 50,
-    },
-    {
-        src: "https://source.unsplash.com/user/s_auk_/1200x800",
-        height: 1200,
-        width: 800,
-    },
-    {
-        src: "https://source.unsplash.com/user/erondu/800x500",
-        height: 800,
-        width: 500,
-    },
-    {
-        src: "https://source.unsplash.com/user/s_auk_/1000x1000",
-        height: 1000,
-        width: 1000,
-    },
-    {
-        src: "https://source.unsplash.com/user/erondu/800x1000",
-        height: 800,
-        width: 1000,
-    },
-    {
-        src: "https://source.unsplash.com/user/s_auk_/1000x400",
-        height: 1000,
-        width: 400,
-    },
-    {
-        src: "https://source.unsplash.com/user/erondu/400x400",
-        height: 400,
-        width: 400,
-    },
-    {
-        src: "https://source.unsplash.com/user/s_auk_/600x400",
-        height: 600,
-        width: 400,
-    },
-    {
-        src: "https://source.unsplash.com/user/erondu/800x1000",
-        height: 800,
-        width: 1000,
-    },
-    {
-        src: "https://source.unsplash.com/user/s_auk_/1000x400",
-        height: 1000,
-        width: 400,
-    },
-];
 
 const ProjetPage = ({ dimensions }) => {
     //Projet qui a été sélectionné
@@ -77,10 +25,12 @@ const ProjetPage = ({ dimensions }) => {
     if (nextIndex >= projets.length) {
         nextIndex = 0;
     }
+    const nextProject = projets[nextIndex];
     let prevIndex = projets.indexOf(selectedProjet) - 1;
     if (prevIndex === -1) {
         prevIndex = projets.length - 1;
     }
+    const prevProject = projets[prevIndex];
 
     const { scrollYProgress } = useViewportScroll();
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.3]);
@@ -100,7 +50,7 @@ const ProjetPage = ({ dimensions }) => {
 
     let lastLocation = useLastLocation();
     useEffect(() => {
-        if (lastLocation && lastLocation.pathname === `/${projets[prevIndex].path}`) {
+        if (lastLocation && lastLocation.pathname === `/${prevProject.path}`) {
             setTransitionOutDefault(false);
         }
     });
@@ -137,6 +87,7 @@ const ProjetPage = ({ dimensions }) => {
                         className='overlay'
                     ></motion.div>
                     <h1 className='text-lg'>{selectedProjet.name}</h1>
+                    <div className='scroll'></div>
                 </header>
                 <div className='content'>
                     <div className='text container'>
@@ -153,6 +104,20 @@ const ProjetPage = ({ dimensions }) => {
                                     ))}
                                 </div>
                             </div>
+                            {selectedProjet.links && (
+                                <div className='item'>
+                                    <p className='text-sub'>Liens</p>
+                                    <div className='services'>
+                                        {selectedProjet.links.map(({ name, url }) => (
+                                            <p key={url}>
+                                                <a href={url} target='_blank' rel='noopener noreferrer'>
+                                                    {name}
+                                                </a>
+                                            </p>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                         <hr />
                         <div className='description'>
@@ -177,10 +142,10 @@ const ProjetPage = ({ dimensions }) => {
             </article>
             <motion.div className='next-projet'>
                 <ProgressiveImage
-                    src={require(`../../assets/projets/${projets[nextIndex].path}/${
+                    src={require(`../../assets/projets/${nextProject.path}/${
                         dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
                     }`)}
-                    placeholder={require(`../../assets/projets/${projets[nextIndex].path}/tiny/${
+                    placeholder={require(`../../assets/projets/${nextProject.path}/tiny/${
                         dimensions.width > 600 ? selectedProjet.couvertureXl : selectedProjet.couvertureMobile
                     }`)}
                 >
@@ -203,8 +168,8 @@ const ProjetPage = ({ dimensions }) => {
                             Projet suivant
                         </motion.p>
                     </div>
-                    <NavLink to={projets[nextIndex].path} exact onClick={() => setTransitionOutDefault(false)}>
-                        <h2 className='text-lg'>{projets[nextIndex].name}</h2>
+                    <NavLink to={nextProject.path} exact onClick={() => setTransitionOutDefault(false)}>
+                        <h2 className='text-lg'>{nextProject.name}</h2>
                     </NavLink>
                 </motion.div>
             </motion.div>

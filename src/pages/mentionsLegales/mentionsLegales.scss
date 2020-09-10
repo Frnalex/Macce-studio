@@ -1,0 +1,26 @@
+.mentions {
+    .mention {
+        margin-bottom: 50px;
+        .text-lg {
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+            &.text-sub {
+                margin-bottom: 5px;
+            }
+        }
+        ul {
+            margin-bottom: 20px;
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @include up(992) {
+        p {
+            max-width: 600px;
+        }
+    }
+}
